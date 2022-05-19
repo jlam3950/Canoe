@@ -10,6 +10,8 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/views/index.html'))
 })
 
+console.log('test')
+
 let port = process.env.PORT
 
 app.listen(port)
