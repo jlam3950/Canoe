@@ -1,0 +1,20 @@
+{
+  "name": "canoe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rugby8724/Canoe.git"
+  },
+  "keywords": [],
+  "author": "Jeremiah Wise <jwise.x7@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rugby8724/Canoe/issues"
+  },
+  "homepage": "https://github.com/rugby8724/Canoe#readme"
+}
