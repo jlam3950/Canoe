@@ -2,19 +2,28 @@
   "name": "canoe",
   "version": "1.0.0",
   "description": "",
-  "main": "test.js",
+  "main": "api/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "devStart": "nodemon api/server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rugby8724/Canoe.git"
   },
   "keywords": [],
-  "author": "Jeremiah Wise <jwise.x7@gmail.com>",
+  "author": "Terence Smith, Jeff Lee, Jeremiah Wise",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/rugby8724/Canoe/issues"
   },
-  "homepage": "https://github.com/rugby8724/Canoe#readme"
+  "homepage": "https://github.com/rugby8724/Canoe#readme",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "connect-livereload": "^0.6.1",
+    "livereload": "^0.9.3",
+    "nodemon": "^2.0.16"
+  }
 }
