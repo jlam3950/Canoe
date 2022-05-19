@@ -1,5 +1,6 @@
 const express = require('express')
 const path = require('path')
+require('dotenv').config()
 
 const app = express()
 
@@ -9,4 +10,6 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/views/index.html'))
 })
 
-app.listen(3000)
+let port = process.env.PORT
+
+app.listen(port)
