@@ -4,13 +4,33 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Canoe</title>
 </head>
 <body>
 
-  <h1>CANOE</h1>
-  <div id ='flightsContainer'>
+  <h1>
+    <center>
+      <img src ="../../public/static/canoe-1-logo-pack/canoe-1-logo-black-and-white.png" id = 'logo' alt = 'canoeLogo' width = "250" length ='400'>
+    </center>
+  </h1>
+  
+  <form>
+    <center>
+      <label for ='AirportDept'>Departure:</label>
+        <input type = 'text' placeholder = 'Airport Dept Code (e.g. MIA)'></input>
+      <label for ='AirportArr'>Arrival:</label>
+        <input type = 'text' placeholder = 'Airport Arrival Code (e.g. IND)'></input>
+      <label for ='DeptDate'>Departure Date:</label>
+        <input type = 'text' placeholder = 'Departure Date (e.g DD/MM/YY')></input>
+      <label for ='ArrDate'>Arrival Date:</label>
+        <input type = 'text' placeholder = 'Arrival Date (e.g DD/MM/YY')></input>
+    </form>
+   </center>
+   <center>
+    <input type ='submit' id= 'submitBtn' value = 'Submit'></button>
+  </center> 
 
+  <div id ='flightsContainer'>
   </div>
 
   <script src="/js/main.js"></script>
