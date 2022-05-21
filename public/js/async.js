@@ -46,14 +46,14 @@ const renderFlightData = (arr) =>{
         displayFlightDiv.innerHTML +=
             `<div class = 'flightCard'>
             <h3>${flight.airlines}<h3>
-            <div>From${flight.flyFrom}</div>
-            <div>To${flight.flyTo}</div>
-            <div>Departs${flight.local_departure}</div>
-            <div>Arrives${flight.local_arrival}</div>`
+            <div>From:${flight.flyFrom}</div>
+            <div>To:${flight.flyTo}</div>
+            <div>Departs:${flight.local_departure}</div>
+            <div>Arrives:${flight.local_arrival}</div>`
     })
 }
 
-loadFlightData();
+// loadFlightData();
 
 //userInput for Flights
 
