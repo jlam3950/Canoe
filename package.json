@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/rugby8724/Canoe#readme",
   "dependencies": {
-    "ejs": "^3.1.8",
+    "dotenv": "^16.0.1",
     "express": "^4.18.1"
   },
   "devDependencies": {
