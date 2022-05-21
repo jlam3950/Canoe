@@ -13,14 +13,18 @@ app.use(express.static(path.join(__dirname, '../public')))
 
 
 
-testData = JSON.parse('{"hello": "world"}')
+
 
 
 app.get('/send', (req, res) => {
-  res.json(testData)
+  keys = {
+    aviationKey: process.env.AVIATION_TRACKER,
+    tequilaKey: process.env.TEQUILA_API_KEY
+  }
+  res.json(keys)
 })
 
-
+// console.log(test.then(key => console.log(key)))
 
 
 let port = process.env.PORT

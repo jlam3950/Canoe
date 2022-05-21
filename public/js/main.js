@@ -1,21 +1,24 @@
 
-async function test () {
-  try{
-    response = await fetch('/send')
-  }catch{
-    console.log('early')
-  }
 
+
+const sendKeys = async () => {
   try {
-    
+    let response = await fetch('/send')
     let apiKeys = await response.json()
-    console.log(apiKeys)
+    return apiKeys
   }catch(e){
     console.log(`oh No: ${e}`)
   }
   
+ 
 }
+// example on how to get the Keys, use async await for your function
+// const getKeys = async () =>{
+//   let keys = await sendKeys()
+//   console.log(keys)
+// }
 
-console.log('main')
+// getKeys()
 
-test()
+
+
