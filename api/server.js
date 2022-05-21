@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, '../public')))
 
 app.get('/send', (req, res) => {
   keys = {
-    aviationKey: process.env.AVIATION_TRACKER,
+    airLabKey: process.env.AIRLAB_TRACKER,
     tequilaKey: process.env.TEQUILA_API_KEY
   }
   res.json(keys)
