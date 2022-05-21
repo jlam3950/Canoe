@@ -1,16 +1,27 @@
 const express = require('express')
 const path = require('path')
-require('dotenv').config()
+require('dotenv').config({ path: path.join(__dirname, '../api/.env') })
 
 const app = express()
 
-// app.set('view engine', 'ejs')
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/views/index.html'))
+  res.sendFile(path.join(__dirname, '../src/views/index.html'))
 })
 
-console.log('test')
+app.use(express.static(path.join(__dirname, '../public')))
+
+
+
+testData = JSON.parse('{"hello": "world"}')
+
+
+app.get('/send', (req, res) => {
+  res.json(testData)
+})
+
+
+
 
 let port = process.env.PORT
 
