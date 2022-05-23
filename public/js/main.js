@@ -9,8 +9,6 @@ const sendKeys = async () => {
   }catch(e){
     console.log(`oh No: ${e}`)
   }
-  
- 
 }
 // example on how to get the Keys, use async await for your function
 // const getKeys = async () =>{
