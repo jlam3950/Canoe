@@ -5,37 +5,53 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Canoe</title>
-  <!-- <link rel = 'stylesheet' href = '../styles.css'> -->
+  <link rel = 'stylesheet' href = '/static/css/styles.css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
 <body>
-
+  <center>
   <h1>
-    <center>
-      <img src ="../../public/static/canoe-1-logo-pack/canoe-1-logo-black-and-white.png" id = 'logo' alt = 'canoeLogo' width = "250" length ='400'>
-    </center>
+      <!-- <img src ="static/canoe-1-logo-pack/canoe-1-logo-black-and-white.png" id = 'logo' alt = 'canoeLogo' width = "250" height ='150'> -->
+      <div>C</div>
+      <div>A</div>
+      <div>N</div>
+      <div>O</div>
+      <div>E</div>
   </h1>
+</center>
+
   
   <form id ='airportForm'>
     <center>
-      <label for ='AirportDept'><strong>Departure:</strong></label>
-        <input id = 'searchFrom' type = 'text' placeholder = 'Departure Code (e.g. MIA)' value = "ATL"></input>
-      <label for ='AirportArr'><strong>Arrival:</strong></label>
-        <input id = 'searchTo'type = 'text' placeholder = 'Arrival Code (e.g. IND)' value = "IND"></input>
-      <label for ='DeptDate'><strong>Departure Date:</strong></label>
-        <input id = 'departureDate' type ='text' placeholder = ' DD/MM/YY' value = '06/06/2022'></input>
-      <label for ='ArrDate'><strong>Arrival Date:</strong></label>
+      <label for ='AirportDept'><strong>Departure</strong></label>
+        <input id = 'searchFrom' type = 'text' placeholder = 'Departure Code (e.g. MIA)' value = "ATL" maxlength ='3'></input>
+      <label for ='AirportArr'><strong>Arrival</strong></label>
+        <input id = 'searchTo'type = 'text' placeholder = 'Arrival Code (e.g. IND)' value = "IND" maxlength ='3'></input>
+      <label for ='DeptDate'><strong>Departure Date</strong></label>
+        <input id = 'departureDate' type ='text' placeholder = ' DD/MM/YY' value = '06/06/2022' maxlength = '10'></input>
+      <label for ='ArrDate'><strong>Arrival Date</strong></label>
       <!-- type ='date' for dropdown calendar -->
-        <input id ='arrivalDate' type ='text' placeholder = 'DD/MM/YY' value = '08/06/2022'></input>
+        <input id ='arrivalDate' type ='text' placeholder = 'DD/MM/YY' value = '08/06/2022' maxlength = '10'></input>
     </form>
+      <div class="errorMsg">
+      </div>
    </center>
-   <br>
+
+   <hr class ='horizontaLine'>
+
    <center>
     <input type ='submit' id= 'submitBtn' value = 'Submit'></button>
     <input type ='reset' id= 'resetBtn' value = 'Reset'></button>
   </center> 
 
+  <center>
+  <div class="spinner">
+    <div></div>
+    <div></div>
+  </div>
   <div id ='flightsContainer'>
   </div>
+  </center>
 
   <script src="/js/main.js"></script>
   <script src="/js/async.js"></script>
