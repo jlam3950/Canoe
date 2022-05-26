@@ -1,0 +1,159 @@
+
+*{
+    box-sizing: border-box;
+}
+
+h1{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: .1em;
+    color: #fff;
+    margin: 2em;
+}
+
+h1 > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(237,114,50);
+    height: 55px;
+    width: 55px;
+    font-size: 40px;
+    font-weight: bold;
+}
+/* #flightsContainer{
+    display: flex;
+    justify-content: center;
+} */
+
+#airportForm{
+    font-size: 25px;
+    padding-bottom: .5em;
+}
+#searchFrom, #searchTo{
+    width: 40px;
+}
+
+#departureDate, #arrivalDate{
+    width: 90px;
+}
+
+hr{
+    width: 50%;
+    border: 1px transparent black;
+    border-radius: 5px;
+    margin-bottom: 2em;
+}
+
+.flightCard{
+    display:flex;
+    border: none;
+    border-radius: 5px;
+    padding: 1em;
+    box-shadow: 5px 3px 5px black;
+    width: 75%;
+    flex-wrap: wrap;
+    margin: 1em;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    margin: 0 2em;
+    font-size: 20px; 
+    /* check font size later */
+  }
+
+
+
+.saveFlightBtn{
+    cursor: pointer;
+    background-color: rgb(49, 98, 233);
+    border-radius: 5px;
+    border: none;
+    box-shadow: 3px 3px 5px black;
+    color: #fff; 
+    text-align: center;
+    height: fit-content;
+    margin-top: 1.5em;
+    padding: 1em;
+}
+
+#resetBtn, #submitBtn{
+    cursor: pointer;
+    background-color: rgb(49, 98, 233);
+    border-radius: 5px;
+    border: none;
+    box-shadow: 3px 3px 5px black;
+    color: #fff; 
+    text-align: center;
+    display: inline-block;
+    padding: 1em;
+}
+
+.saveFlightBtn:active {
+    box-shadow: 1px 1px 5px black;
+    transform: translateY(2px);
+}
+
+#resetBtn:active {
+    box-shadow: 1px 1px 5px black;
+    transform: translateY(2px);
+}
+
+#submitBtn:active {
+    box-shadow: 1px 1px 5px black;
+    transform: translateY(2px);
+}
+
+.airlineLogo{
+    width: 80%;
+}
+
+.errorMsg{
+    font-size: 12px;
+    color: red;
+    margin-top: 1em;
+    display: block;
+}
+
+.spinner{
+    width: 10em;
+    height: 10em;
+    position: relative;
+    padding-top: 5em;
+}
+
+.spinner div {
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 8px solid transparent;
+    border-top-color:rgb(49, 98, 233);
+    border-radius: 50%;
+    animation: spinnerOne 1.5s linear infinite;
+}
+
+.spinner div:nth-child(2){
+    border: 8px solid transparent;
+    border-bottom-color:rgb(49, 98, 233);
+    animation: spinnerTwo 1.5s linear infinite;
+
+}
+
+@keyframes spinnerOne{
+    0% { transform: rotate(0deg); border-width: 10px}
+    50% { transform: rotate(180deg); border-width: 1px}
+    100% { transform: rotate(360deg); border-width: 10px}
+}
+
+@keyframes spinnerTwo{
+    0% { transform: rotate(0deg); border-width: 1px}
+    50% { transform: rotate(180deg); border-width: 10px}
+    100% { transform: rotate(360deg); border-width: 1px}
+}

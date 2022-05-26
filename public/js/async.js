@@ -1,28 +1,54 @@
-let searchFrom = document.querySelector('#searchFrom');
-let searchTo = document.querySelector('#searchTo');
-let depDate = document.querySelector('#departureDate');
-let arrDate = document.querySelector('#arrivalDate');
-let searchForm = document.querySelector('#airportForm');
-let subBtn = document.querySelector('#submitBtn');
-let resetBtn = document.querySelector('#resetBtn');
-let displayFlightDiv = document.querySelector('#flightsContainer');
+// const { format } = require("express/lib/response"); ?
+const searchFrom = document.querySelector('#searchFrom');
+const searchTo = document.querySelector('#searchTo');
+const depDate = document.querySelector('#departureDate');
+const arrDate = document.querySelector('#arrivalDate');
+const searchForm = document.querySelector('#airportForm');
+const subBtn = document.querySelector('#submitBtn');
+const resetBtn = document.querySelector('#resetBtn');
+const displayFlightDiv = document.querySelector('#flightsContainer');
+const errorMsg = document.querySelector('.errorMsg');
+const loader = document.querySelector('.spinner');
 
-
-// document.addEventListener('DOMContentLoaded', () =>{
-//     document.getElementById('addBtn').addEventListener('click', addFlight());
-// });
 
 subBtn.addEventListener('click', function(){
+    // e.preventDefault;
+    checkForm();
     loadFlightData();
 });
 
 resetBtn.addEventListener('click', function(){
     searchForm.reset();
+    displayFlightDiv.innerHTML = '';
+    searchFrom.value = '';
+    searchTo.value = '';
+    depDate.value = '';
+    arrDate.value = '';
 });
+
+const checkForm = () => {
+    var letters = /^[A-Za-z]+$/;
+    var numbers = /^[0-9/\\]*$/;
+    
+    if(letters.test(searchFrom.value) && letters.test(searchTo.value) 
+        && numbers.test(depDate.value) && numbers.test(arrDate.value)){ //can also use .match (e.g. searchFrom.value.match(letters))
+        loading();
+        return true;
+
+    } else{
+        displayMsg();
+    }
+}
+
+function displayMsg(){
+    errorMsg.innerHTML = 'Please, enter letters for airport code field and numbers for date field.'
+    setTimeout(clearMsg => {
+        errorMsg.innerHTML = '';
+    }, 3500);
+}
 
 const loadFlightData = async() =>{
    let key = await sendKeys();
-
    try { const url = `https://tequila-api.kiwi.com/v2/search?fly_from=${searchFrom.value}&fly_to=${searchTo.value}&dateFrom=${depDate.value}&dateTo=${arrDate.value}`;
     const response = await fetch( url, {
         method: 'GET', 
@@ -31,8 +57,8 @@ const loadFlightData = async() =>{
                 }
     })
     const data = await response.json();
-    console.log(data.data);
     limitResults(data.data);
+    complete();
     }catch(error){
         console.log(error);
     }
@@ -44,54 +70,62 @@ const limitResults = (flightData) => {
         flightArr[i] = flightData[i]
     }
     renderFlightData(flightArr);
-    // addFlight();
 }
 
 const renderFlightData = (arr) =>{
     arr.forEach((flight) => {
       // console.log(flight)
         displayFlightDiv.innerHTML +=
-            `<div class = 'flightCard'>
-            <h3>${flight.airlines}<h3>
-            <div>From:${flight.flyFrom}</div>
-            <div>To:${flight.flyTo}</div>
-            <div>Departs:${(flight.local_departure).slice(11,16)}</div>
-            <div>Arrives:${(flight.local_arrival).slice(11,16)}</div>
-            <div>Price:${flight.price}
-            <div>Duration:${(flight.duration.departure)/60}
-            <br>
-            <button href='#' class='saveFlightBtn' >Add To Favorites</button>
+
+           `<div class = 'flightCard'>
+                <div class = 'col'>
+                    <img class = 'airlineLogo' src= "static/airlineLogos/${flight.airlines[0]}.png">
+                </div>
+                <div class = 'col'>
+                    <div class = 'row'>
+                        From:${flight.flyFrom}
+                    </div>
+                    <div class = 'row'>
+                        To:${flight.flyTo}
+                    </div>
+                </div>
+                <div class = 'col'>
+                    <div class = 'row'>
+                        Departs:${(flight.local_departure).slice(11,16)} 
+                        Arrives:${(flight.local_arrival).slice(11,16)} 
+                    </div>
+                </div>
+                <div class = 'col'>
+                    <div class = 'row'>
+                        Price:$${flight.price}
+                        Flight:${flight.route[0].flight_no}
+                    </div>                        
+                </div>
+                 <button class = 'saveFlightBtn' >Save Flight</button>
             </div>`
     })
     const saveFlightBtns = [...document.querySelectorAll('.saveFlightBtn')]
     saveFlightBtns.forEach((flightBtn, flightIndex) => {
       flightBtn.addEventListener('click', function(){
-        console.log(arr[flightIndex])
+
+        // console.log(arr[flightIndex])
+        changeBtnColor(flightBtn);
       })
     })
-    // console.log(arr);
+
+    const changeBtnColor = (button) => {
+        button.innerHTML = ''
+        button.style.backgroundColor = 'red';
+        button.innerHTML = 'Saved!'
+    }
 }
 
-// const addClickEvent = () =>{
-    
-//     const allAddButtons = Array.from(document.getElementsByClassName('addBtn')); //look up .from array method 
+loader.hidden = true;
 
-//     allAddButtons.forEach(addButton=>{
-//         addButton.addEventListener('click', function handleClick(e){
-//             console.log(e.target);
-//         })
-//     })
+function loading(){
+    loader.hidden=false;
+}
 
-//     console.log(allAddButtons)
-// }
-
-const saveFlight = (event) =>{
-    flightId = (event.target.dataset.flightid)
-    console.log(`hi: ${flightId}`)
-   }
-// const addFlight = (e) => {
-//     e.preventDefault();
-//     console.log(flight.price);
-// }  
-// document.getElementById('addBtn').addEventListener('click', addFlight);
-
+function complete(){
+    loader.hidden=true;
+}
