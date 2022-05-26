@@ -49,6 +49,7 @@ const limitResults = (flightData) => {
 
 const renderFlightData = (arr) =>{
     arr.forEach((flight) => {
+      // console.log(flight)
         displayFlightDiv.innerHTML +=
             `<div class = 'flightCard'>
             <h3>${flight.airlines}<h3>
@@ -59,29 +60,34 @@ const renderFlightData = (arr) =>{
             <div>Price:${flight.price}
             <div>Duration:${(flight.duration.departure)/60}
             <br>
-            <button class = 'addBtn' >Add To Favorites</button>
+            <button href='#' class='saveFlightBtn' >Add To Favorites</button>
             </div>`
     })
-    addClickEvent();
-    console.log(arr);
-}
-
-const addClickEvent = () =>{
-    
-    const allAddButtons = Array.from(document.getElementsByClassName('addBtn')); //look up .from array method 
-
-    allAddButtons.forEach(addButton=>{
-        addButton.addEventListener('click', function handleClick(e){
-            console.log(e.target);
-        })
+    const saveFlightBtns = [...document.querySelectorAll('.saveFlightBtn')]
+    saveFlightBtns.forEach((flightBtn, flightIndex) => {
+      flightBtn.addEventListener('click', function(){
+        console.log(arr[flightIndex])
+      })
     })
-
-    console.log(allAddButtons)
+    // console.log(arr);
 }
 
-const saveFlight = (arr) =>{
-    let favoritedFlights = [];
-    console.log('hi')
+// const addClickEvent = () =>{
+    
+//     const allAddButtons = Array.from(document.getElementsByClassName('addBtn')); //look up .from array method 
+
+//     allAddButtons.forEach(addButton=>{
+//         addButton.addEventListener('click', function handleClick(e){
+//             console.log(e.target);
+//         })
+//     })
+
+//     console.log(allAddButtons)
+// }
+
+const saveFlight = (event) =>{
+    flightId = (event.target.dataset.flightid)
+    console.log(`hi: ${flightId}`)
    }
 // const addFlight = (e) => {
 //     e.preventDefault();
