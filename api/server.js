@@ -9,6 +9,10 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../src/views/index.html'))
 })
 
+app.get('/tracker', (req, res) => {
+  res.sendFile(path.join(__dirname, '../src/views/tracker.html'))
+})
+
 app.use(express.static(path.join(__dirname, '../public')))
 
 
