@@ -74,7 +74,9 @@ const limitResults = (flightData) => {
 
 const renderFlightData = (arr) =>{
     arr.forEach((flight) => {
+      // console.log(flight)
         displayFlightDiv.innerHTML +=
+
            `<div class = 'flightCard'>
                 <div class = 'col'>
                     <img class = 'airlineLogo' src= "static/airlineLogos/${flight.airlines[0]}.png">
@@ -105,6 +107,7 @@ const renderFlightData = (arr) =>{
     const saveFlightBtns = [...document.querySelectorAll('.saveFlightBtn')]
     saveFlightBtns.forEach((flightBtn, flightIndex) => {
       flightBtn.addEventListener('click', function(){
+
         // console.log(arr[flightIndex])
         changeBtnColor(flightBtn);
       })
