@@ -67,30 +67,46 @@ const filterAirport = async () => {
           flight.addEventListener('click', function(){
             const { lat, lng } = airportData[index]
             flightMap(lat, lng)
-            console.log(lat, lng)
-            
-            // getFlightLocation(flight.innerHTML)
           })
           
         })
       }
       
-  const map = L.map("map").setView([0, 0], 5);
+  const map = L.map("map").setView([0, 0], 1);
+  const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+  const attribution =
+  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  const tiles = L.tileLayer(tileUrl, { attribution })
+  tiles.addTo(map);
+
   const Icon = L.icon({
-    iconUrl: "mapplane.png",
-    iconSize: [50, 32],
-    iconAnchor: [25, 16],
+    iconUrl: "/static/canoe-1-logo-pack/CanoeLogo.png",
+    iconSize: [60, 20],
+    iconAnchor: [30, 10],
   });
 
-  const marker = L.marker([0, 0], { icon: Icon }).addTo(map);
-  const flightMap = (lat, lng) => {
-  
-  marker.setLatLng([lat, lng]);
-  const attribution =
-    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-  const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-  const tiles = L.tileLayer(tileUrl, { attribution })
-  tiles.addTo(map)
-  
+  const marker = L.marker([0, 0], { icon: Icon })
 
-}
+  const flightMap = (lat, lng) => {
+  map.setView([lat,lng], 5);
+  marker.setLatLng([lat, lng]).addTo(map);;
+  }
+
+//   const map = L.map("map").setView([0, 0], 5);
+//   const Icon = L.icon({
+//     iconUrl: "/static/canoe-1-logo-pack/CanoeLogo.png",
+//     iconSize: [60, 20],
+//     iconAnchor: [25, 16],
+//   });
+
+//   const marker = L.marker([0, 0], { icon: Icon }).addTo(map);
+
+//   const flightMap = (lat, lng) => {
+  
+//   marker.setLatLng([lat, lng]);
+//   const attribution =
+//     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+//   const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+//   const tiles = L.tileLayer(tileUrl, { attribution })
+//   tiles.addTo(map)
+// }

@@ -192,3 +192,8 @@ hr {
 #map {
   height: 180px;
 }
+
+.logo{
+  height: auto;
+  width: 150px;
+}
