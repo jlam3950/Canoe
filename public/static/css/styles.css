@@ -50,6 +50,7 @@ hr{
     border: none;
     border-radius: 5px;
     padding: 1em;
+    background-color: rgb(222, 213, 207);
     box-shadow: 5px 3px 5px black;
     width: 75%;
     flex-wrap: wrap;
@@ -155,4 +156,12 @@ hr{
     0% { transform: rotate(0deg); border-width: 1px}
     50% { transform: rotate(180deg); border-width: 10px}
     100% { transform: rotate(360deg); border-width: 1px}
+} 
+
+@media only screen and(max-width: 390px){
+    #airportForm{
+         width: 300px;
+         display: flex;
+         margin: 1em;
+    }
 }
