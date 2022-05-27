@@ -2,7 +2,8 @@ let flightHTML = document.querySelector("#flight-data");
 // const newFlightBtn = document.getElementById("track-flight-button");
 
 const getFlights = async (airportCode = 'ATL' ) => {
-    const apiUrl = `https://airlabs.co/api/v9/flights?dep_iata=${airportCode}&api_key=83895248-1266-4387-aa73-ae0326da34d8`;
+    let key = await sendKeys()
+    const apiUrl = `https://airlabs.co/api/v9/flights?dep_iata=${airportCode}&api_key=${key.airLabKey}`;
    
   try {
     const res = await fetch(apiUrl);
@@ -15,8 +16,8 @@ const getFlights = async (airportCode = 'ATL' ) => {
 }
 
 const getFlightLocation = async (flightNum) => {
- 
-    const apiUrl = `https://airlabs.co/api/v9/flights?flight_number=${flightNum}&api_key=83895248-1266-4387-aa73-ae0326da34d8`;
+  let key = await sendKeys()
+    const apiUrl = `https://airlabs.co/api/v9/flights?flight_number=${flightNum}&api_key=${key.airLabKey}`;
   try {
     const res = await fetch(apiUrl);
     const data = await res.json();
