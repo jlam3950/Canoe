@@ -189,11 +189,93 @@ hr {
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+
+
 #map {
-  height: 180px;
+  height: 500px;
+  /* width:500px; */
+  /* display:flex;
+  justify-content: center; */
 }
 
 .logo{
   height: auto;
   width: 150px;
 }
+
+/* modal stuff 
+ */
+.modal {
+  display: none;
+  /* display: none; */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-content {
+  /* background-color: white; */
+  /* height: 1000px;
+  width: 1000px; */
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+  animation-name: modalopen;
+  animation-duration: 1s;
+}
+
+.map-container{
+  /* height: 600px; */
+  width: 100%px;
+  /* margin-left: 250px; */
+  margin-top: 200px;
+}
+
+.closeBtn {
+  color: #EE691B;
+  float: right;
+  font-size: 30px;
+}
+
+.closteBtn:hover,
+.closeBtn:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@keyframes modalopen {
+  from {
+      opacity: 0
+  }
+
+  to {
+      opacity: 1
+  }
+}
+
+/* .modal-header {
+  background: #EE691B;
+  padding: 15px;
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.modal-header h2
+{
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+} */
