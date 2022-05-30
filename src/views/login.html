@@ -7,9 +7,28 @@
   <title>Document</title>
 </head>
 <body>
+  <div>
+    <button id='googleSignInBtn'>Sign in With Google</button>
+  </div>
+  <div>
+    <h1>Sign up with your email and password</h1>
+    <form action="">
+      <label for="">Display Name</label>
+      <input id='displayName' type="text" required>
 
-<h1>Sing in Page</h1>
-<button id='googleSignInBtn'>Sign in With Google</button>
+      <label for="">Email</label>
+      <input id='email' type="email" required>
+
+      <label for="">Password</label>
+      <input id='password' type="password" required>
+
+      <label for="">Confirm Password</label>
+      <input id='confirmPassword' type="password" required>
+      <button id="signUpEmailBtn" type="submit">Submit</button>
+    </form>
+  </div>
+
+
 <script type="module" src="/js/firebase.js"></script>
 </body>
 </html>
