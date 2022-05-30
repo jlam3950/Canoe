@@ -27,7 +27,20 @@ const getFlightLocation = async (flightNum) => {
     console.log(error);
   }
 };
-getFlightLocation()
+
+const showFlightNum = async () => {
+  flightNumHTML.innerHTML = ''
+  const flightStuff = document.getElementById('flight-numbers').value
+  let airlineNumber = await getFlightLocation(flightStuff)
+  // console.log(airlineNumber)
+  let airlineData = airlineNumber.filter((airline) => {
+    console.log(airlineData)
+    if (airlineData.flight_number == flightStuff) {
+      return airline
+      // openModal(work)
+    }
+  })
+}
 
 const filterAirport = async () => {
         flightHTML.innerHTML = ''
@@ -66,8 +79,10 @@ const filterAirport = async () => {
           flightNums.forEach((flight, index) => {
           flight.addEventListener('click', function(){
             const { lat, lng } = airportData[index]
+
             // flightMap(lat, lng);
             openModal(lat,lng); //may not need to use flightMap within openModal
+
           })
           
         })
@@ -95,15 +110,19 @@ const filterAirport = async () => {
   
   }
 
+
 //modal
   const modal = document.getElementById('mapmodal')
   const closeBtn = document.getElementsByClassName('closeBtn')[0]
+
     
   
   function openModal(lat, lng) {
     modal.style.display = 'block'
+
     map.getSize(flightMap(lat,lng));
     flightMap(lat,lng);
+
   }
   
   function closeModal() {
@@ -115,6 +134,8 @@ const filterAirport = async () => {
       modal.style.display = "none";
     }
   }
+
+
 
 
 // modalBtn.addEventListener('click', openModal)

@@ -203,6 +203,7 @@ hr {
   width: 150px;
 }
 
+
 /* modal stuff 
  */
 .modal {
@@ -246,9 +247,11 @@ hr {
 .closteBtn:hover,
 .closeBtn:focus {
   color: #000;
+
   text-decoration: none;
   cursor: pointer;
 }
+
 
 @keyframes modalopen {
   from {
@@ -279,3 +282,4 @@ hr {
   justify-content: center;
 
 } */
+
