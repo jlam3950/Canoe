@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flight Tracker</title>
+    <link rel="stylesheet" href="flight.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+      integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+      crossorigin=""
+    />
+
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+  </head>
+  <body class="bg-image">
+    <div class="img-container">
+      <img class="logo" src="./CanoeLogo-1.png" alt="Canoe Logo" />
+      <div class="nav-container">
+        <ul>
+          <li><a class="nav" href="#">Flights</a></li>
+          <li><a class="nav" href="#">Sign In</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="work-container">
+      <hr />
+      <!-- <div class="bg-image">Canoe</div> -->
+
+      <div class="flex-container">
+        <div class="flight-container">
+          <div class="card-flight">
+            <div class="content-flight">
+              <h2>Flight Tracker</h2>
+              <!-- <a href="#">Track Flight</a> -->
+              <h5>Airport</h5>
+              <input type="text" placeholder="ATL" id="flight" />
+              <!-- Enter Airport: <input type="text" id="date"> -->
+              <button id="butt" onclick="filterAirport()">Show Flights</button>
+              <br />
+              <h5>Flight Number</h5>
+              <input type="text" placeholder="DL1234" id="flight-numbers" />
+              <!-- Enter Flight Number: <input type="text" id="date"> -->
+              <button id="butts" onclick="showFlightNum()">Track Flight</button>
+            </div>
+            <img id="canoe-img" src="./canoe_PNG27.png" alt="canoe" />
+          </div>
+        </div>
+      </div>
+
+      <div id="mapmodal" class="modal">
+            <div class="modal-content">
+              <!-- <div class="modal-header"> -->
+                <div class="map-container">
+                  <div id = 'map'></div>
+                </div>
+              </div>
+              <span class="closeBtn">&times;</span>
+              <!-- <div id="map"></div> -->
+            </div>
+      </div>
+
+    <div class="container">
+      <div class="row row-cols-1 row-cols-md-2 g-4" id="flight-data"></div>
+    </div>
+
+    <script
+      src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+      integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+      crossorigin=""
+    ></script>
+    <script src="/canoe.js"></script>
+  </body>
+</html>
