@@ -8,7 +8,7 @@
 }
 
 .bg-image {
-background-image: url('./canoe-map.jpg');
+background-image: url('/static/tracker-img/canoe-map.jpg');
 background-size: cover;
 background-position: center;
 background-repeat: no-repeat;
@@ -186,7 +186,7 @@ ul li a:hover:after {
 
 .map-container {
     height: 500px;
-    margin: 50% auto;
+    /* margin: 50% auto; */
 
 }
 

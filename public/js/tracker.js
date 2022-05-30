@@ -1,10 +1,9 @@
 let flightHTML = document.querySelector("#flight-data");
-const flightNumHTML = document.getElementById('flighttwo')
+let flightNumHTML = document.getElementById('flight-numbers')
 // const newFlightBtn = document.getElementById("track-flight-button");
 
 const getFlights = async (airportCode = 'ATL' ) => {
-    let key = await sendKeys()
-    const apiUrl = `https://airlabs.co/api/v9/flights?dep_iata=${airportCode}&api_key=${key.airLabKey}`;
+    const apiUrl = `https://airlabs.co/api/v9/flights?dep_iata=${airportCode}&api_key=01da7d2d-cba9-4540-8ec0-ce28b70f70c5`;
    
   try {
     const res = await fetch(apiUrl);
@@ -17,8 +16,7 @@ const getFlights = async (airportCode = 'ATL' ) => {
 }
 
 const getFlightLocation = async (flightNum) => {
-  let key = await sendKeys()
-    const apiUrl = `https://airlabs.co/api/v9/flights?flight_icao=${flightNum}&api_key=${key.airLabKey}`;
+    const apiUrl = `https://airlabs.co/api/v9/flights?flight_iata=${flightNum}&api_key=01da7d2d-cba9-4540-8ec0-ce28b70f70c5`;
   try {
     const res = await fetch(apiUrl);
     const data = await res.json();
@@ -29,116 +27,118 @@ const getFlightLocation = async (flightNum) => {
   }
 };
 
+// const getFlightData = async () => {
+//     const apiUrl = ``
+
+
+// };
+
 const showFlightNum = async () => {
   flightNumHTML.innerHTML = ''
-  const flightStuff = document.getElementById('flight-numbers').value
+  const flightStuff = flightNumHTML.value
+  console.log(flightStuff)
   let airlineNumber = await getFlightLocation(flightStuff)
-  // console.log(airlineNumber)
-  let airlineData = airlineNumber.filter((airline) => {
-    console.log(airlineData)
-    if (airlineData.flight_number == flightStuff) {
-      return airline
-      // openModal(work)
-    }
-  })
+  console.log(airlineNumber)
+  const { lat, lng } = airlineNumber[0]
+      openModal(lat, lng)
 }
 
+
+
 const filterAirport = async () => {
-        flightHTML.innerHTML = ''
-        const flightInfo = document.getElementById("flight").value.toUpperCase();
-    // const flightDate = document.getElementById("date").value
-    // const flightTime = document.getElementById('time').value
-        // flightInfo = 'MIA'
-        let airportName = await getFlights(flightInfo);
-        console.log(airportName)
-        let airportData = airportName.filter((airport) => {
-        // let departDate = airport
-        // console.log(departDate)
-            if (airport.dep_iata == flightInfo) {
-                return airport;
-            }
-    })
-        // console.log(airportData)
-        for (i = 0; i < 9; i++) {
-            flightHTML.innerHTML += 
-        `
-       
-        <div class="flex-grid">
-          <div class="col">
-          Flight    ${airportData[i].airline_iata}   <a href="#" class="flights">${airportData[i].flight_number}</a><br>
-          Departure ${airportData[i].status}       ${airportData[i].dep_iata}<br>
-          Arrival   ${airportData[i].speed}             ${airportData[i].arr_iata}
-          </div>
-          </div>
-          
-          
-          
-          `
-        }
-        const flightNums = [...document.querySelectorAll('.flights')]
-          console.log(flightNums)
-          flightNums.forEach((flight, index) => {
-          flight.addEventListener('click', function(){
-            const { lat, lng } = airportData[index]
-
-            // flightMap(lat, lng);
-            openModal(lat,lng); //may not need to use flightMap within openModal
-
-          })
-          
-        })
-      }
-      
-  const map = L.map("map")
-  // const map = L.map("map").setView([0, 0], 1);
-  const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-  const attribution =
-  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-  const tiles = L.tileLayer(tileUrl, { attribution })
-  tiles.addTo(map);
-
-  const Icon = L.icon({
-    iconUrl: "/static/canoe-1-logo-pack/rafting.png",
-    iconSize: [50, 20],
-    iconAnchor: [25, 15],
+  flightHTML.innerHTML = "";
+  const flightInfo = document.getElementById("flight").value.toUpperCase();
+  // const flightDate = document.getElementById("date").value
+  // const flightTime = document.getElementById('time').value
+  // flightInfo = 'MIA'
+  let airportName = await getFlights(flightInfo);
+  // console.log(airportName)
+  let airportData = airportName.filter((airport) => {
+    // let departDate = airport
+    // console.log(departDate)
+    if (airport.dep_iata == flightInfo) {
+      return airport;
+    }
   });
+  // console.log(airportData)
+  for (i = 0; i < 10; i++) {
+    flightHTML.innerHTML += `
 
-  const marker = L.marker([0, 0], { icon: Icon })
-
-  const flightMap = (lat, lng) => {
-  map.setView([lat,lng], 8);
-  marker.setLatLng([lat, lng]).addTo(map);
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+        
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item-1">Flight Number: ${airportData[i].flight_iata}</li>
+            <li class="list-group-item">Flight Status: ${airportData[i].status}</li>
+            <li class="list-group-item">Speed: ${airportData[i].speed}</li>
+          </ul>
+      <div class="card-body">
+       <a href="#" class="card-link flights">Flight Location</a>
+      </div>
+        </div>
+      </div>
+    </div>
   
+    
+    `;
   }
+  const flightNums = [...document.querySelectorAll(".flights")];
+  console.log(flightNums);
+  flightNums.forEach((flight, index) => {
+    flight.addEventListener("click", function () {
+      const { lat, lng } = airportData[index];
+      // flightMap(lat, lng);
+      openModal(lat, lng); //may not need to use flightMap within openModal
+    });
+  });
+};
 
+const map = L.map("map");
+// const map = L.map("map").setView([0, 0], 1);
+const tileUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+const attribution =
+  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+const tiles = L.tileLayer(tileUrl, { attribution });
+tiles.addTo(map);
+
+const Icon = L.icon({
+  iconUrl: "/static/tracker-img/canoe_PNG27.png", //change to an actual canoe
+  iconSize: [50, 20],
+  iconAnchor: [25, 15],
+});
+
+const marker = L.marker([0, 0], { icon: Icon });
+
+const flightMap = (lat, lng) => {
+  map.setView([lat, lng], 8);
+  marker.setLatLng([lat, lng]).addTo(map);
+};
 
 //modal
-  const modal = document.getElementById('mapmodal')
-  const closeBtn = document.getElementsByClassName('closeBtn')[0]
+const modal = document.getElementById("mapmodal");
+const closeBtn = document.getElementsByClassName("closeBtn")[0];
 
-    
-  
-  function openModal(lat, lng) {
-    modal.style.display = 'block'
+function openModal(lat, lng) {
+  modal.style.display = "block";
+  map.getSize(flightMap(lat, lng));
+  flightMap(lat, lng);
 
-    map.getSize(flightMap(lat,lng));
-    flightMap(lat,lng);
+}
 
-  }
-  
-  function closeModal() {
+function closeModal() {
+  modal.style.display = "none";
+}
+
+function outsideClick(e) {
+  if (e.target == modal) {
     modal.style.display = "none";
   }
-  
-  function outsideClick(e) {
-    if (e.target == modal) {
-      modal.style.display = "none";
-    }
-  }
-
-
-
+}
 
 // modalBtn.addEventListener('click', openModal)
-closeBtn.addEventListener('click', closeModal)
-window.addEventListener('click', outsideClick)
+closeBtn.addEventListener("click", closeModal);
+window.addEventListener("click", outsideClick);
+
+
+
