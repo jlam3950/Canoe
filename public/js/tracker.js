@@ -27,7 +27,20 @@ const getFlightLocation = async (flightNum) => {
     console.log(error);
   }
 };
-getFlightLocation()
+
+const showFlightNum = async () => {
+  flightNumHTML.innerHTML = ''
+  const flightStuff = document.getElementById('flight-numbers').value
+  let airlineNumber = await getFlightLocation(flightStuff)
+  // console.log(airlineNumber)
+  let airlineData = airlineNumber.filter((airline) => {
+    console.log(airlineData)
+    if (airlineData.flight_number == flightStuff) {
+      return airline
+      // openModal(work)
+    }
+  })
+}
 
 const filterAirport = async () => {
         flightHTML.innerHTML = ''
@@ -66,7 +79,8 @@ const filterAirport = async () => {
           flightNums.forEach((flight, index) => {
           flight.addEventListener('click', function(){
             const { lat, lng } = airportData[index]
-            flightMap(lat, lng)
+            openModal(lat, lng)
+            // flightMap(lat, lng)
           })
           
         })
@@ -91,6 +105,34 @@ const filterAirport = async () => {
   map.setView([lat,lng], 5);
   marker.setLatLng([lat, lng]).addTo(map);;
   }
+
+  const modal = document.getElementById('mapmodal')
+  // const modalBtn = document.querySelectorAll('.flights')
+  const closeBtn = document.getElementById('closeBtn')
+
+// const openMapModal = () => {
+    
+  
+  function openModal(lat, lng) {
+    modal.style.display = 'block'
+    flightMap(lat, lng)
+  }
+  
+  function closeModal() {
+    modal.style.display = "none";
+  }
+  
+  function outsideClick(e) {
+    if (e.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+// }  
+
+// modalBtn.addEventListener('click', openModal)
+closeBtn.addEventListener('click', closeModal)
+// window.addEventListener('click', outsideClick)
+
 
 //   const map = L.map("map").setView([0, 0], 5);
 //   const Icon = L.icon({
