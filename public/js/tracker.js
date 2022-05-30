@@ -79,14 +79,17 @@ const filterAirport = async () => {
           flightNums.forEach((flight, index) => {
           flight.addEventListener('click', function(){
             const { lat, lng } = airportData[index]
-            openModal(lat, lng)
-            // flightMap(lat, lng)
+
+            // flightMap(lat, lng);
+            openModal(lat,lng); //may not need to use flightMap within openModal
+
           })
           
         })
       }
       
-  const map = L.map("map").setView([0, 0], 1);
+  const map = L.map("map")
+  // const map = L.map("map").setView([0, 0], 1);
   const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
   const attribution =
   '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -94,28 +97,32 @@ const filterAirport = async () => {
   tiles.addTo(map);
 
   const Icon = L.icon({
-    iconUrl: "/static/canoe-1-logo-pack/CanoeLogo.png",
-    iconSize: [60, 20],
-    iconAnchor: [30, 10],
+    iconUrl: "/static/canoe-1-logo-pack/rafting.png",
+    iconSize: [50, 20],
+    iconAnchor: [25, 15],
   });
 
   const marker = L.marker([0, 0], { icon: Icon })
 
   const flightMap = (lat, lng) => {
-  map.setView([lat,lng], 5);
-  marker.setLatLng([lat, lng]).addTo(map);;
+  map.setView([lat,lng], 8);
+  marker.setLatLng([lat, lng]).addTo(map);
+  
   }
 
-  const modal = document.getElementById('mapmodal')
-  // const modalBtn = document.querySelectorAll('.flights')
-  const closeBtn = document.getElementById('closeBtn')
 
-// const openMapModal = () => {
+//modal
+  const modal = document.getElementById('mapmodal')
+  const closeBtn = document.getElementsByClassName('closeBtn')[0]
+
     
   
   function openModal(lat, lng) {
     modal.style.display = 'block'
-    flightMap(lat, lng)
+
+    map.getSize(flightMap(lat,lng));
+    flightMap(lat,lng);
+
   }
   
   function closeModal() {
@@ -127,28 +134,10 @@ const filterAirport = async () => {
       modal.style.display = "none";
     }
   }
-// }  
+
+
+
 
 // modalBtn.addEventListener('click', openModal)
 closeBtn.addEventListener('click', closeModal)
-// window.addEventListener('click', outsideClick)
-
-
-//   const map = L.map("map").setView([0, 0], 5);
-//   const Icon = L.icon({
-//     iconUrl: "/static/canoe-1-logo-pack/CanoeLogo.png",
-//     iconSize: [60, 20],
-//     iconAnchor: [25, 16],
-//   });
-
-//   const marker = L.marker([0, 0], { icon: Icon }).addTo(map);
-
-//   const flightMap = (lat, lng) => {
-  
-//   marker.setLatLng([lat, lng]);
-//   const attribution =
-//     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-//   const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-//   const tiles = L.tileLayer(tileUrl, { attribution })
-//   tiles.addTo(map)
-// }
+window.addEventListener('click', outsideClick)
