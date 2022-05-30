@@ -1,8 +1,20 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js"
-import { getAuth, signInWithPopup, createUserWithEmailAndPassword, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js"
-import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-firestore.js"
+import { 
+  getAuth, 
+  signInWithPopup, 
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword, 
+  GoogleAuthProvider 
+} from "https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js"
+import { 
+  getFirestore, 
+  doc, 
+  getDoc, 
+  setDoc 
+} from "https://www.gstatic.com/firebasejs/9.8.1/firebase-firestore.js"
 const googleSignInBtn = document.getElementById('googleSignInBtn')
 const signUpEmailBtn = document.getElementById('signUpEmailBtn')
+const signInEmailBtn = document.getElementById('signInEmailBtn')
 
 // const getFirebase = async () => {
 //   try {
@@ -92,25 +104,25 @@ const createUserDocumentFromAuth = async (userAuth, additionalInfromation = {}) 
 
 signUpEmailBtn.addEventListener('click', async (e) => {
   e.preventDefault()
-  let displayName = document.getElementById('displayName')
-  let email = document.getElementById('email')
-  let password = document.getElementById('password')
-  let confirmPassword = document.getElementById('confirmPassword')
-  if(!email.value || !password.value){
+  let displayName = document.getElementById('displayName').value
+  let email = document.getElementById('email').value
+  let password = document.getElementById('password').value
+  let confirmPassword = document.getElementById('confirmPassword').value
+  if(!email || !password){
     alert('email or password is blank')
     return
   }
-  if(password.value != confirmPassword.value){
+  if(password != confirmPassword){
     alert('password and confirmed password do not match')
     return
   }
   try {
-   const {user} = await createAuthUserWithEmailAndPassword(email.value, password.value)
-    await createUserDocumentFromAuth(user, {displayName: `${displayName.value}`})
-    displayName.value=''
-    email.value=''
-    password.value=''
-    confirmPassword.value=''
+   const {user} = await createAuthUserWithEmailAndPassword(email, password)
+    await createUserDocumentFromAuth(user, {displayName: `${displayName}`})
+    displayName=''
+    email=''
+    password=''
+    confirmPassword=''
   }
   catch(error){
     if(error.code == 'auth/email-already-in-use'){
@@ -123,9 +135,43 @@ signUpEmailBtn.addEventListener('click', async (e) => {
   
 })
 
+signInEmailBtn.addEventListener('click', async (e) =>{
+  e.preventDefault()
+  let email = document.getElementById('signInEmail').value
+  let password = document.getElementById('signInPassword').value
+  if(!email || !password){
+    alert('email or password is blank')
+    return
+  }
+  try {
+    const response = await signInAuthUserWithEmailAndPassword(email, password)
+    console.log(response)
+    email = ''
+    password = ''
+  }
+  catch (error){
+    switch(error.code){
+      case 'auth/wrong-password':
+        alert('incorrect password')
+        break
+      case 'auth/user-not-found':
+        alert('no user associated with this email')
+        break
+      default:
+        console.log(error)
+    }
+  }
+
+})
+
 googleSignInBtn.addEventListener('click', logGoogleUser)
 
 
 const createAuthUserWithEmailAndPassword = async (email, password) => {
   return await createUserWithEmailAndPassword(auth, email, password)
+}
+
+
+const signInAuthUserWithEmailAndPassword = async (email, password) => {
+  return await signInWithEmailAndPassword(auth, email, password)
 }
