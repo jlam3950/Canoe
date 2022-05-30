@@ -4,7 +4,9 @@ import {
   signInWithPopup, 
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword, 
-  GoogleAuthProvider 
+  GoogleAuthProvider,
+  signOut,
+  onAuthStateChanged 
 } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js"
 import { 
   getFirestore, 
@@ -15,6 +17,8 @@ import {
 const googleSignInBtn = document.getElementById('googleSignInBtn')
 const signUpEmailBtn = document.getElementById('signUpEmailBtn')
 const signInEmailBtn = document.getElementById('signInEmailBtn')
+const signOutBtns = document.querySelectorAll('.signOut')
+const signInBtns = document.querySelectorAll('.signIn')
 
 // const getFirebase = async () => {
 //   try {
@@ -63,6 +67,7 @@ const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider)
 
 const logGoogleUser = async () => {
   const {user} = await signInWithGooglePopup()
+  signInUser(user)
   const userDocRef = await createUserDocumentFromAuth(user)
 }
 
@@ -104,25 +109,26 @@ const createUserDocumentFromAuth = async (userAuth, additionalInfromation = {}) 
 
 signUpEmailBtn.addEventListener('click', async (e) => {
   e.preventDefault()
-  let displayName = document.getElementById('displayName').value
-  let email = document.getElementById('email').value
-  let password = document.getElementById('password').value
-  let confirmPassword = document.getElementById('confirmPassword').value
-  if(!email || !password){
+  let displayName = document.getElementById('displayName')
+  let email = document.getElementById('email')
+  let password = document.getElementById('password')
+  let confirmPassword = document.getElementById('confirmPassword')
+  if(!email.value || !password.value){
     alert('email or password is blank')
     return
   }
-  if(password != confirmPassword){
+  if(password.value != confirmPassword.value){
     alert('password and confirmed password do not match')
     return
   }
   try {
-   const {user} = await createAuthUserWithEmailAndPassword(email, password)
-    await createUserDocumentFromAuth(user, {displayName: `${displayName}`})
-    displayName=''
-    email=''
-    password=''
-    confirmPassword=''
+   const {user} = await createAuthUserWithEmailAndPassword(email.value, password.value)
+   signInUser(user)
+    await createUserDocumentFromAuth(user, {displayName: `${displayName.value}`})
+    displayName.value=''
+    email.value=''
+    password.value=''
+    confirmPassword.value=''
   }
   catch(error){
     if(error.code == 'auth/email-already-in-use'){
@@ -137,17 +143,17 @@ signUpEmailBtn.addEventListener('click', async (e) => {
 
 signInEmailBtn.addEventListener('click', async (e) =>{
   e.preventDefault()
-  let email = document.getElementById('signInEmail').value
-  let password = document.getElementById('signInPassword').value
-  if(!email || !password){
+  let email = document.getElementById('signInEmail')
+  let password = document.getElementById('signInPassword')
+  if(!email.value || !password.value){
     alert('email or password is blank')
     return
   }
   try {
-    const response = await signInAuthUserWithEmailAndPassword(email, password)
-    console.log(response)
-    email = ''
-    password = ''
+    const {user} = await signInAuthUserWithEmailAndPassword(email.value, password.value)
+    signInUser(user)
+    email.value = ''
+    password.value = ''
   }
   catch (error){
     switch(error.code){
@@ -163,6 +169,30 @@ signInEmailBtn.addEventListener('click', async (e) =>{
   }
 
 })
+
+const signInUser = () =>{
+  signOutBtns.forEach(outBtn => {
+    outBtn.style.display = 'block'
+    outBtn.addEventListener('click', signOutUser)
+  })
+  signInBtns.forEach(inBtn => {
+    inBtn.style.display = 'none'
+  })
+}
+
+const signOutUser = async() =>{
+  await signOut(auth)
+  signOutBtns.forEach(outBtn => {
+    outBtn.style.display = 'none'
+  })
+  signInBtns.forEach(inBtn => {
+    inBtn.style.display = 'block'
+  })
+
+} 
+
+const onAuthStateChangedListner = (callback) => 
+  onAuthStateChanged(auth, callback)
 
 googleSignInBtn.addEventListener('click', logGoogleUser)
 
