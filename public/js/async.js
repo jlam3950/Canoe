@@ -11,6 +11,11 @@ const errorMsg = document.querySelector('.errorMsg');
 const loader = document.querySelector('.spinner');
 const flightIdeas = document.querySelector('#travelIdeas');
 
+const hamburg = document.querySelector(".hamburger2");
+const sideBar = document.querySelector(".active");
+hamburg.addEventListener("click", function(){
+    sideBar.classList.toggle("active");
+})
 
 subBtn.addEventListener('click', function(){
     checkForm();
@@ -103,8 +108,6 @@ const renderFlightData = (arr) =>{
     const saveFlightBtns = [...document.querySelectorAll('.saveFlightBtn')]
     saveFlightBtns.forEach((flightBtn, flightIndex) => {
       flightBtn.addEventListener('click', function(){
-
-        // console.log(arr[flightIndex])
         changeBtnColor(flightBtn);
       })
     })

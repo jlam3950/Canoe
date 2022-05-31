@@ -9,34 +9,59 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
 
-<body>
-  <section class="navbar">
-    <container class="navbar_container">
-      <div class ='menu-wrap'>
-        <input type ='checkbox' class = 'toggler'>
-        <div class = 'hamburger'><div></div></div>
-     
-        <!-- <img src ="/static/canoe-1-logo-pack/CanoeLogo.png" id = 'logo'> -->
-     
-        <div class="menu">
-          <div>
-            <div>
-              <ul>
-                <li><a href ='#'>Home</a></li>
-                <li><a href ='#'>About</a></li>
-                <li><a href ='#'>Flight Tracker</a></li>
-              </ul>
-            </div>
-          </div>
+<body class = 'active'>
+<div class="wrapper">
+  <div class="sidebar">
+    <ul>
+      <li>
+          <a href="http://localhost:3000">
+              <span class="icon"><i class="fas fa-home"></i></span>
+              <span class="item">Home</span>
+          </a>
+      </li>
+      <li>
+          <a href="http://localhost:3000/tracker">
+              <span class="icon"><i class="fas fa-plane"></i></span>
+              <span class="item">Flight Tracker</span>
+          </a>
+      </li>
+      <li>
+          <a href="http://localhost:3000/login/">
+              <span class="icon"><i class="fas fa-user-friends"></i></span>
+              <span class="item">My Saved Flights</span>
+          </a>
+      </li>
+      <li>
+          <a href="https://www.airbnb.com/">
+              <span class="icon"><i class="fas fa-bed"></i></span>
+              <span class="item">Hotels</span>
+          </a>
+      </li>
+      <li>
+          <a href="#">
+              <span class="icon"><i class="fas fa-cog"></i></span>
+              <span class="item">Settings</span>
+          </a>
+      </li>
+    </ul>
+  </div>
+  
+  <div class="section">
+    <div class="top_navbar">
+      <div class="hamburger2">  
+         <a href='#'>
+            <i class = "fas fa-bars"></i>
+         </a>
+      </div>
+      <div class="signIn"> 
+        <a href="http://localhost:3000/tracker">
+          <button type = 'submit' id ='signInBtn'><i class="fa-solid fa-user"></i>  Sign In</button>
+        </a>
         </div>
-      </div>
-      
-      <div class="signIn">
-        <input type ='submit' id= 'signInBtn' value = 'Sign In'></button>
-      </div>
-    </container>
-  </section>
+    </div>
+  </div>
 
+  <div class="main">
   <section class="header">
     <container class="header_container">
       <div class="logo">
@@ -85,8 +110,9 @@
 </section>
 
 <container id="travelIdeas">
+  
   <h2>
-    Top Vacation Destinations
+    Vacation Destinations
   </h2>
   <div>
     <img src ='static/canoe-1-logo-pack/cristina-gottardi-KX_214Qr7Ko-unsplash.jpg' class = 'travelPic' id ='alps'> 
@@ -100,7 +126,7 @@
     <img src =' static/canoe-1-logo-pack/la-so-vk4vjTNVrTg-unsplash.jpg' class = 'travelPic' id = 'barcelona'>
     <p>Barcelona, Spain</p>
   </div>
-  <div>
+  <!-- <div>
     <img src ='static/canoe-1-logo-pack/waterfall.avif' class = 'travelPic' id ='costa'> 
     <p>Corcovado National Park, Costa Rica</p>
   </div>
@@ -111,21 +137,44 @@
 
   <div>
     <img src =' static/canoe-1-logo-pack/hongKong.avif' class = 'travelPic' id = 'hongKong'>
-    <p>Hong Kong, China</p>
+    <p>Lantau Island, Hong Kong</p>
+  </div> -->
+  <h2>
+    Travel Tips & Planning
+  </h2>
+  <div class = 'travelTips'>
+    <img src ='static/canoe-1-logo-pack/canoe-map.jpg' class = 'travelTipsPic' id ='canoeMap'> 
+    <img src ='static/canoe-1-logo-pack/packingTips.avif' class = 'packingPic' id ='packing'> 
+    <!-- <img src ='static/canoe-1-logo-pack/canoeTip.jpeg' class = 'canoeTip' id = 'canoe'> -->
+    <!-- <div class = 'tipsBlock'> Check out these travel blogs to make sure you're ready for your next trip!</div> -->
   </div>
+  
 </container>
+</div>
 
-<section class="footer">
-  <container class="footer_container">
-    <div></div>
-  </container>
-</section>
+  <section class="footer-title">
+    <container class="footer_container">
+      <hr>
+      <div class="footer">
+        <div>
+          <p>Contact Us</p>
+        </div>
+        <div>
+          <i class="fa-brands fa-linkedin"></i>
+          <i class="fa-brands fa-github-square"></i>
+          <i class="fa-brands fa-facebook-square"></i>
+          <i class="fa-brands fa-twitter-square"></i></i>
+        </div>
+        <div>
+          <p>©2022</p>
+        </div>
+      </div>
+    </container>
+  </section>
 
+</div>
 
-
-  </center>
-  <script type="module" src="/js/firebase.js"></script>
-
+  <!-- <script type="module" src="/js/firebase.js"></script> -->
   <script src="/js/main.js"></script>
   <script src="/js/async.js"></script>
 
