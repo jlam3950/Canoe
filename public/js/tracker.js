@@ -27,11 +27,7 @@ const getFlightLocation = async (flightNum) => {
   }
 };
 
-// const getFlightData = async () => {
-//     const apiUrl = ``
 
-
-// };
 
 const showFlightNum = async () => {
   flightNumHTML.innerHTML = ''
@@ -47,6 +43,7 @@ const showFlightNum = async () => {
 
 const filterAirport = async () => {
   flightHTML.innerHTML = "";
+  // flightHTML.style.display = "none"
   const flightInfo = document.getElementById("flight").value.toUpperCase();
   // const flightDate = document.getElementById("date").value
   // const flightTime = document.getElementById('time').value
