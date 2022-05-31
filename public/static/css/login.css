@@ -12,19 +12,28 @@
     justify-content: space-between;
 }
 
+.nav-container > ul {
+    display: flex;
+    margin: 0 .1em;
+}
+
 .img-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+.logo{
+    margin: 15px 15px;
+    width: 280px;
+}
+
 .bg-image {
-    background-image: url('/static/tracker-img/canoe-map.jpg');
+    /* background-image: url('/static/tracker-img/canoe-map.jpg'); */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     height: 100vh;
-
     z-index: -1;
 }
 
@@ -74,7 +83,6 @@ ul li a:after {
     content: "";
     width: 0;
     height: 5px;
-    background-color: #EE691B;
     position: absolute;
     top: 120%;
     right: 0;
@@ -91,6 +99,21 @@ ul li a:hover:after {
     transform: translateX(-100%);
 }
 
+#googleSignInBtn{
+    padding: .5em;
+    border-radius: 5px;
+    margin: 0 auto;
+    background-color: rgba( 237, 114, 50);
+    color: white;
+    font-weight:1000;
+    width: 12em;
+    border: none;
+}
+
+.btnContainer{
+    display: flex;
+    justify-content: center;
+}
 
 @media (max-width: 768px) {
     .img-container{
