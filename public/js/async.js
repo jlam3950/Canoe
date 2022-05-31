@@ -9,16 +9,17 @@ const resetBtn = document.querySelector('#resetBtn');
 const displayFlightDiv = document.querySelector('#flightsContainer');
 const errorMsg = document.querySelector('.errorMsg');
 const loader = document.querySelector('.spinner');
+const flightIdeas = document.querySelector('#travelIdeas');
 
 
 subBtn.addEventListener('click', function(){
-    // e.preventDefault;
     checkForm();
     loadFlightData();
 });
 
 resetBtn.addEventListener('click', function(){
     searchForm.reset();
+    flightIdeas.style.visibility = 'visible';
     displayFlightDiv.innerHTML = '';
     searchFrom.value = '';
     searchTo.value = '';
@@ -31,7 +32,7 @@ const checkForm = () => {
     var numbers = /^[0-9/\\]*$/;
     
     if(letters.test(searchFrom.value) && letters.test(searchTo.value) 
-        && numbers.test(depDate.value) && numbers.test(arrDate.value)){ //can also use .match (e.g. searchFrom.value.match(letters))
+        && numbers.test(depDate.value) && numbers.test(arrDate.value)){ 
         loading();
         return true;
 
@@ -69,40 +70,35 @@ const limitResults = (flightData) => {
     for (let i = 0; i < 10; i++){
         flightArr[i] = flightData[i]
     }
+    console.log(flightArr);
     renderFlightData(flightArr);
 }
 
 const renderFlightData = (arr) =>{
     arr.forEach((flight) => {
-      // console.log(flight)
         displayFlightDiv.innerHTML +=
-
-           `<div class = 'flightCard'>
+            `<div class = 'flightCard'>
                 <div class = 'col'>
-                    <img class = 'airlineLogo' src= "static/airlineLogos/${flight.airlines[0]}.png">
+                     <img class = 'airlineLogo' src= "static/airlineLogos/${flight.airlines[0]}.png">
                 </div>
-                <div class = 'col'>
-                    <div class = 'row'>
-                        From:${flight.flyFrom}
-                    </div>
-                    <div class = 'row'>
-                        To:${flight.flyTo}
-                    </div>
-                </div>
-                <div class = 'col'>
-                    <div class = 'row'>
-                        Departs:${(flight.local_departure).slice(11,16)} 
-                        Arrives:${(flight.local_arrival).slice(11,16)} 
-                    </div>
-                </div>
-                <div class = 'col'>
-                    <div class = 'row'>
-                        Price:$${flight.price}
-                        Flight:${flight.route[0].flight_no}
-                    </div>                        
-                </div>
+             <div class = 'col'>
+                   From:${flight.cityFrom}
+                     <br>
+                   To:${flight.cityTo}
+            </div>
+            <div class = 'col'> 
+                Departs:${(flight.local_departure).slice(11,16)} 
+                Arrives:${(flight.local_arrival).slice(11,16)} 
+              </div>
+            <div class = 'col'>
+                Flight:${flight.route[0].flight_no}
+                Price:$${flight.price}
+            </div>
+            <div class = 'col'>
                  <button class = 'saveFlightBtn' >Save Flight</button>
-            </div>`
+             </div>
+        </div>`
+
     })
     const saveFlightBtns = [...document.querySelectorAll('.saveFlightBtn')]
     saveFlightBtns.forEach((flightBtn, flightIndex) => {
@@ -123,6 +119,7 @@ const renderFlightData = (arr) =>{
 loader.hidden = true;
 
 function loading(){
+    flightIdeas.style.visibility = 'hidden';
     loader.hidden=false;
 }
 

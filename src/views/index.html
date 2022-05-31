@@ -6,53 +6,126 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Canoe</title>
   <link rel = 'stylesheet' href = '/static/css/styles.css'>
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
+
 <body>
+  <section class="navbar">
+    <container class="navbar_container">
+      <div class ='menu-wrap'>
+        <input type ='checkbox' class = 'toggler'>
+        <div class = 'hamburger'><div></div></div>
+     
+        <!-- <img src ="/static/canoe-1-logo-pack/CanoeLogo.png" id = 'logo'> -->
+     
+        <div class="menu">
+          <div>
+            <div>
+              <ul>
+                <li><a href ='#'>Home</a></li>
+                <li><a href ='#'>About</a></li>
+                <li><a href ='#'>Flight Tracker</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="signIn">
+        <input type ='submit' id= 'signInBtn' value = 'Sign In'></button>
+      </div>
+    </container>
+  </section>
 
-  <h1>
-      <img src ="/static/canoe-1-logo-pack/CanoeLogo.png" id = 'logo'>
-  </h1>
+  <section class="header">
+    <container class="header_container">
+      <div class="logo">
+          <img src ="/static/canoe-1-logo-pack/CanoeLogo.png" id = 'logo'>
+      </div>
+    </container>
+  </section>
 
-  <h2>
-    <!-- <p>Where Are You Flying?</p> -->
-  </h2>
-
-
+<section class="search">
  <container class = 'form_container'>
    
   <form id ='airportForm'>
+    <div>
       <label for ='AirportDept'>Departure</label>
-        <input id = 'searchFrom' type = 'text' placeholder = 'Departure Code (e.g. MIA)' value = "ATL" maxlength ='3'></input>
+      <input id = 'searchFrom' type = 'text' placeholder = 'Departure Code (e.g. MIA)' value = "ATL" maxlength ='3' minlength = '3'></input>
+    </div>
+    <div>
       <label for ='AirportArr'>Arrival</label>
         <input id = 'searchTo'type = 'text' placeholder = 'Arrival Code (e.g. IND)' value = "IND" maxlength ='3'></input>
+    </div>
+    <div>
       <label for ='DeptDate'>Departure Date</label>
         <input id = 'departureDate' type ='text' placeholder = ' DD/MM/YY' value = '06/06/2022' maxlength = '10'></input>
+    </div>
+    <div>
       <label for ='ArrDate'>Arrival Date</label>
-      <!-- type ='date' for dropdown calendar -->
         <input id ='arrivalDate' type ='text' placeholder = 'DD/MM/YY' value = '08/06/2022' maxlength = '10'></input>
+    </div>
     </form>
-      <div class="errorMsg">
+      <div class="errorMsg"></div>
+      <div class="btnContainer">
+        <input type ='submit' id= 'submitBtn' value = 'Search'></button>
+        <input type ='reset' id= 'resetBtn' value = 'Reset'></button>
       </div>
   </container>
+</section>
 
-   <hr class ='horizontaLine'>
+ <section class="flights">
+   <container class="loading_container">
+    <div class="spinner">
+      <div></div>
+      <div></div>
+    </div>
+      <div id ='flightsContainer'></div>
+  </container>
+</section>
 
-   <center>
-    <input type ='submit' id= 'submitBtn' value = 'Search'></button>
-    <input type ='reset' id= 'resetBtn' value = 'Reset'></button>
-  </center> 
-
-  <center>
-  <div class="spinner">
-    <div></div>
-    <div></div>
+<container id="travelIdeas">
+  <h2>
+    Top Vacation Destinations
+  </h2>
+  <div>
+    <img src ='static/canoe-1-logo-pack/cristina-gottardi-KX_214Qr7Ko-unsplash.jpg' class = 'travelPic' id ='alps'> 
+    <p>Zurich, Switzerland</p>
   </div>
-  <div id ='flightsContainer'>
+  <div>
+    <img src ='static/canoe-1-logo-pack/shifaaz-shamoon-qtbV_8P_Ksk-unsplash.jpg' class = 'travelPic' id ='bahamas'> 
+    <p>Nassau, Bahamas</p>
   </div>
+  <div>
+    <img src =' static/canoe-1-logo-pack/la-so-vk4vjTNVrTg-unsplash.jpg' class = 'travelPic' id = 'barcelona'>
+    <p>Barcelona, Spain</p>
+  </div>
+  <div>
+    <img src ='static/canoe-1-logo-pack/waterfall.avif' class = 'travelPic' id ='costa'> 
+    <p>Corcovado National Park, Costa Rica</p>
+  </div>
+  <div>
+    <img src ='static/canoe-1-logo-pack/egypt.avif' class = 'travelPic' id ='egypt'> 
+    <p>Cairo, Egypt</p>
+  </div>
+
+  <div>
+    <img src =' static/canoe-1-logo-pack/hongKong.avif' class = 'travelPic' id = 'hongKong'>
+    <p>Hong Kong, China</p>
+  </div>
+</container>
+
+<section class="footer">
+  <container class="footer_container">
+    <div></div>
+  </container>
+</section>
+
+
+
   </center>
   <script type="module" src="/js/firebase.js"></script>
+
   <script src="/js/main.js"></script>
   <script src="/js/async.js"></script>
 
