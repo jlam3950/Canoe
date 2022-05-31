@@ -1,0 +1,99 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.img-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bg-image {
+    background-image: url('/static/tracker-img/canoe-map.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+
+    z-index: -1;
+}
+
+h1 {
+    font-family: Raleway;
+    font-size: 25px;
+    color: #EE691B;
+    position: relative;
+    background-color: white;
+    padding: 10px 10px;
+    border-radius: 15px;
+}
+
+ul {
+    padding: 0;
+    display: flex;
+}
+
+li {
+    list-style-type: none;
+    padding: 10px 20px;
+}
+
+a.nav {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 20px;
+    color: #EE691B;
+    position: relative;
+    background-color: white;
+    padding: 10px 10px;
+    border-radius: 15px;
+}
+
+ul li a:before {
+    content: "";
+    width: 0;
+    height: 5px;
+    background-color: #00bcd4;
+    position: absolute;
+    top: 120%;
+    left: 0;
+    transition: all 0.5s;
+}
+
+ul li a:after {
+    content: "";
+    width: 0;
+    height: 5px;
+    background-color: #EE691B;
+    position: absolute;
+    top: 120%;
+    right: 0;
+    transition: all 0.5s;
+}
+
+ul li a:hover:before {
+    width: 50%;
+    transform: translateX(100%);
+}
+
+ul li a:hover:after {
+    width: 50%;
+    transform: translateX(-100%);
+}
+
+
+@media (max-width: 768px) {
+    .img-container{
+        display: none;
+    }
+}

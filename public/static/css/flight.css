@@ -12,19 +12,22 @@ background-image: url('/static/tracker-img/canoe-map.jpg');
 background-size: cover;
 background-position: center;
 background-repeat: no-repeat;
+background-attachment: fixed;
 height: 100vh;
 
-z-index: -1;
+
+/* z-index: -1; */
 }
 
 .work-container {
 display: flex;
-flex-direction: column;
-align-items: center;
+/* flex-direction: column; */
+/* align-items: center; */
 justify-content: center;
-height: 100vh;
-margin: 0;
-z-index: 1;
+
+/* height: 100vh; */
+
+/* z-index: 1; */
 }
 
 .flex-container {
@@ -42,9 +45,10 @@ height: 400px;
 display: flex;
 align-items: center;
 border-radius: 20px;
-z-index: 1;
+z-index: -1;
 background-color: white;
 padding: 25px 25px;
+margin-top: 20em;
 }
 
 
@@ -118,6 +122,7 @@ ul li a:hover:after {
     display: flex;
     justify-content: center;
     align-items: center;
+    
 
 }
 
@@ -129,7 +134,7 @@ ul li a:hover:after {
     justify-content: center;
     align-items: center;
     height: 400px;
-    z-index: 1;
+    z-index: -11;
 }
 .content-flight{
     height: 100%;
@@ -172,7 +177,7 @@ ul li a:hover:after {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
+    /* background-color: rgba(0, 0, 0, 0.4); */
     justify-content: center;
     flex-direction: column;
     align-items: center;
@@ -182,10 +187,12 @@ ul li a:hover:after {
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
     animation-name: modalopen;
     animation-duration: 1s;
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .map-container {
     height: 500px;
+    margin-top: 20em;
     /* margin: 50% auto; */
 
 }
@@ -231,6 +238,18 @@ a.card-link.flights{
     width: 200px;
     display: flex;
     justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+    .card-flight, .flight-container, .flex-container, .content-flight{
+        display: block;
+        width: 350px;
+        height: 250px;
+        margin-right: 65px;
+    }  
+    #canoe-img, .img-container{
+      display: none;
+    }
 }
 
 

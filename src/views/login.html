@@ -4,61 +4,73 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Log-In Form</title>
+  <link rel="stylesheet" href="/static/css/login.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
 </head>
-<body>
+<body class="bg-image">
   <div class="img-container">
     <img class="logo" src="/static/canoe-1-logo-pack/CanoeLogo.png" alt="Canoe Logo" />
     <div class="nav-container">
       <ul>
         <li>
-          <a class="flightLink" href="#">Flights</a>
+          <a class="flightLink nav" href="#">Flights</a>
         </li>
         <li>
-          <a class="trackerLink" href="#">Flights</a>
+          <a class="trackerLink nav" href="#">Flight Tracker</a>
         </li>
         <li>
-          <a class="signIn" href="/login">Sign In</a>
+          <a class="signIn nav" href="/login">Sign In</a>
         </li>
         <li>
-          <a class="signOut" href="#" style="display: none;">Sign Out</a>
+          <a class="signOut nav" href="#" style="display: none;">Sign Out</a>
         </li>
       </ul>
     </div>
   </div>
   <hr>
   <div>
+  <div class="container">
+    <form>
+      <div class="mb-3">
+        <h1>Sign in with your email and password</h1>
+        <form action="">
+    
+          <label for="" class="form-label">Email</label>
+          <input id='signInEmail' class="form-control" type="email" required>
+    
+          <label for="" class="form-label">Password</label>
+          <input id='signInPassword' class="form-control" type="password" required>
+    
+          <button id="signInEmailBtn" class="btn btn-primary" type="submit">Sign In</button>
+        </form>
+      </div>
+      <button id='googleSignInBtn'>Sign in With Google</button>
+    
     <div>
-      <h1>Sign in with your email and password</h1>
+      <h1>Sign up with your email and password</h1>
       <form action="">
+        <label for=""class="form-label">Display Name</label>
+        <input id='displayName' class="form-control" type="text" required>
   
-        <label for="">Email</label>
-        <input id='signInEmail' type="email" required>
+        <label for=""class="form-label">Email</label>
+        <input id='email' class="form-control" type="email" required>
   
-        <label for="">Password</label>
-        <input id='signInPassword' type="password" required>
+        <label for=""class="form-label">Password</label>
+        <input id='password' class="form-control" type="password" required>
   
-        <button id="signInEmailBtn" type="submit">Sign In</button>
+        <label for=""class="form-label">Confirm Password</label>
+        <input id='confirmPassword' class="form-control" type="password" required>
+        <button type="button" id="signUpEmailBtn" class="btn btn-primary" type="submit">Sign Out</button>
       </form>
     </div>
-    <button id='googleSignInBtn'>Sign in With Google</button>
+  </form>
   </div>
-  <div>
-    <h1>Sign up with your email and password</h1>
-    <form action="">
-      <label for="">Display Name</label>
-      <input id='displayName' type="text" required>
-
-      <label for="">Email</label>
-      <input id='email' type="email" required>
-
-      <label for="">Password</label>
-      <input id='password' type="password" required>
-
-      <label for="">Confirm Password</label>
-      <input id='confirmPassword' type="password" required>
-      <button type="button" id="signUpEmailBtn" type="submit">Sign Out</button>
-    </form>
   </div>
 
 
