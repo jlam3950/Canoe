@@ -2,165 +2,21 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: sans-serif;
 }
 
-:root{
-    --menu-speed: .75s;
-}
-
-.navbar_container{
-    display:flex;
-    justify-content: end;
-    margin: 1em;
-}
-
-ul > li{
-    text-decoration: none;
-}
-
-.menu-wrap{
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
-}
-
-.menu-wrap .toggler{
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    cursor: pointer;
-    width: 50px;
-    height: 50px;
-    opacity: 0;
-}
-
-/* Lines for Hamburger Menu */
-.menu-wrap .hamburger{
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    width: 60px;
-    height: 60px;
-    padding: 1rem;
-    background: rgb(222,121,67,1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.menu-wrap .hamburger > div{
-    position: relative;
-    width: 100%;
-    height: 2px; 
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.4s ease;
-}
-
-/* top and bottom lines */
-.menu-wrap .hamburger >div:before,
-.menu-wrap .hamburger >div:after{
-    content: '';
-    position:absolute;
-    z-index: 1;
-    top: -10px;
-    width: 100%;
-    height: 2px;
-    background: inherit;
-}
-
-/* moves line down */
-.menu-wrap .hamburger > div:after {
-    top: 10px;
-}
-
-.menu-wrap .toggler:checked + .hamburger >div{
-    transform: rotate(135deg);
-}
-
-.menu-wrap .toggler:checked + .hamburger >div:before,
-.menu-wrap .toggler:checked + .hamburger >div:after{
-    top: 0;
-    transform: rotate(90deg);
-}
-
-.menu-wrap .toggler:checked:hover + .hamburger > div{
-    transform: rotate(225deg);
-}
-
-/* Show Menu */
-.menu-wrap .toggler:checked ~ .menu{
-    visibility: visible;
-}
-
-.menu-wrap .toggler:checked ~ .menu >div{
-    transform:scale(1);
-    transition-duration: var(--menu-speed);
-}
-
-.menu-wrap .toggler:checked ~ .menu > div > div{
-    opacity: 1;
-    transition: opacity 0.4s ease;
-}
-
-.menu-wrap .menu{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    visibility: hidden;
-    overflow:hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.menu-wrap .menu > div{
-    background: rgb(222,121,67, .9);;
-    border-radius: 50%;
-    width: 200vw;
-    height: 200vw;
-    display: flex;
-    flex: none;
-    align-items: center;
-    justify-content: center;
-    transform: scale(0);
-    transition: all .4s ease;
-}
-
-.menu-wrap .menu > div > div {
-    text-align: center;
-    max-width: 90vw;
-    max-height: 100vh;
-    transition: opacity 0.4s ease;
-}
-
-.menu-wrap .menu > div > div > ul > li {
-    list-style: none;
-    color: #fff;
-    font-size: 1.5rem;
-    padding: 1rem;
-}
-
-.menu-wrap .menu > div > div > ul > li > a{
-    color: inherit;
-    text-decoration: none;
-    transition: color 0.4s ease;
+body{
+    background: #f5f6fa;
+    line-height: 1.2
 }
 
 #signInBtn{
     cursor: pointer;
-    background-color: white;
+    background-color: #fff;
     border-radius: 5px;
     width: 100px;
     text-align: center;
-    padding: 1em;
+    padding: .8em;
 }
 
 .header_container{
@@ -174,26 +30,13 @@ ul > li{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 3em;
+    margin-top: 4.5em;
 }
 
 #logo{
     height:auto;
     width: 280px;
 }
-
-/* .header_question{
-    display: flex;
-    justify-content: start;
-    position: relative;
-}
-
-.header-question > p{
-    margin-left: 3em;
-    font-size: 2rem;  
-    
-} */
-
 
 .form_container{
     padding: 0 2em;
@@ -208,24 +51,31 @@ ul > li{
     justify-self: center;
     font-size: 1.5rem;
     padding: .5em 1em;
-    gap: .3em;
+    gap: .2em;
     border-radius: 5px;
     border: none;
     margin: 0 auto;
     margin-top: 2em;
     max-width: 920px;
     width:100%;
+    font-weight: 200;
     
 }
 
 #searchFrom, #searchTo{
     width: 40px;
     font-size: 1rem;
+    border: none;
+    border-radius: 3px;
+    text-align: center;
 } 
 
 #departureDate, #arrivalDate{
     width: 90px;
     font-size: 1rem;
+    border: none;
+    border-radius: 3px;
+    text-align: center;
 }
 
 .btnContainer{
@@ -241,8 +91,6 @@ ul > li{
     position: relative;
     max-width:450px;
 }
-
-
 
 #flightsContainer{
     display: flex;
@@ -261,6 +109,7 @@ ul > li{
     max-width: 1000px;
     flex-wrap: wrap;
     margin: 1em;
+    line-height: 1.4;
 }
 
 .col {
@@ -271,6 +120,7 @@ ul > li{
     flex: 1;
     margin: 0 2em;
     font-size: 20px; 
+    font-weight: 300;
   }
 
 .saveFlightBtn{
@@ -293,7 +143,7 @@ ul > li{
     background-color: rgb(49, 98, 233);
     border-radius: 5px;
     border: none;
-    box-shadow: 3px 3px 5px black;
+    box-shadow: 2px 2px 6px rgba(29, 29, 29, 0.9);
     color: #fff; 
     text-align: center;
     display: inline-block;
@@ -301,17 +151,17 @@ ul > li{
 }
 
 .saveFlightBtn:active {
-    box-shadow: 1px 1px 5px black;
+    box-shadow: 1px 1px 3px rgba(29, 29, 29, 0.9);
     transform: translateY(2px);
 }
 
 #resetBtn:active {
-    box-shadow: 1px 1px 5px black;
+    box-shadow: 1px 1px 3px black;
     transform: translateY(2px);
 }
 
 #submitBtn:active {
-    box-shadow: 1px 1px 5px black;
+    box-shadow: 1px 1px 3px black;
     transform: translateY(2px);
 }
 
@@ -371,20 +221,26 @@ ul > li{
 
 
 #airportForm > div{
-    border: none;
     padding: .5em;
-    font-size: 1em; 
-    background-color: rgb(240,243,245, .75);
+    font-size: .9em; 
+    background-color: rgba(223, 229, 233, 0.9);
     min-width: 100px;
+    z-index:1;
+}
 
+#airportForm > div:nth-child(1){
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+#airportForm > div:nth-child(4){
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 #airportForm > div > label{
     margin-right: .3em;
-}
-
-#airportForm > div > label > input{
-    text-align: center;
+    border: none;
 }
 
 .errorMsg{
@@ -408,11 +264,57 @@ ul > li{
     flex-basis: 100%;
     font-size: 1.7rem;
     margin-bottom: 1rem;
-    margin-left: 4.6rem;
+    margin-left: 3rem;
     margin-top: 4rem;
     font-weight: 200;
-
 }
+
+.travelTips{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 850px;
+    margin: 0 auto;
+    width: 100%;
+    gap: .5rem;
+    position: Relative;
+}
+
+/* look at this again */
+h2:after{ 
+    content: '';
+    display: block;
+    width: 580px;
+    height: 1px;
+    background: rgb(36, 35, 35);
+    margin-top: .6em;
+    margin-left: .3em;
+}
+
+.travelTipsPic{
+    flex-basis: 66%;
+    max-width: 560px;
+    height: 280px;
+    border-radius: 5px;
+}
+
+.packingPic{
+    display: flex;
+    align-items: center;
+    flex-basis: 33%;
+    width: 280px;
+    height: 280px;
+    border-radius: 5px;
+}
+/* 
+.canoeTip{
+    width: 560px;
+    height: 136px;
+    flex-basis: 66%;
+    margin-top: 18em;
+    position: absolute;
+    border-radius: 5px;
+} */
 
 #travelIdeas > div > p{
     font-weight: 150;
@@ -426,6 +328,100 @@ ul > li{
     border-radius: 5px;
     flex-basis: 25%;
 }
+
+/* sidebar */
+
+.sidebar> ul > li > a{
+    text-decoration: none;
+}
+
+.top_navbar{
+    display:flex;
+    justify-content: space-between;
+}
+.wrapper .sidebar{
+    background: rgb(5,68,104);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 225px;
+    height: 100%;
+    padding: 20px 0;
+    transition: all 0.5s ease;
+    z-index: 2;
+}
+
+.wrapper .sidebar ul li a{
+    display: block;
+    padding: 13px 30px;
+    border-bottom: 1px solid #10558d;
+    color: rgb(241, 237, 237);
+    font-size: 16px;
+    position: relative;
+    z-index: 2;
+}
+
+.wrapper .sidebar ul li a .icon{
+    color: #dee4ec;
+    width: 30px;
+    display: inline-block;
+}
+
+.wrapper .sidebar ul li a:hover,
+.wrapper .sidebar ul li a.active{
+    color: #0c7db1;
+    background:white;
+    border-right: 2px solid rgb(5, 68, 104);
+}
+
+.wrapper .sidebar ul li a:hover .icon,
+.wrapper .sidebar ul li a.active .icon{
+    color: #0c7db1;
+}
+
+.wrapper .sidebar ul li a:hover::before,
+.wrapper .sidebar ul li a.active::before{
+    display: block;
+}
+
+.wrapper .section{
+    width: calc(100% - 225px);
+    margin-left: 225px;
+    transition: all 0.5s ease;
+}
+
+.wrapper .section .top_navbar{
+    background: rgb(7, 105, 185);
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+
+}
+
+.wrapper .section .top_navbar .hamburger2 a{
+    font-size: 28px;
+    color: #f4fbff;
+}
+
+.wrapper .section .top_navbar .hamburger2 a:hover{
+    color: #a2ecff;
+}
+
+body.active .wrapper .sidebar{
+    left: -225px;
+}
+
+body.active .wrapper .section{
+    margin-left: 0;
+    width: 100%;
+}
+
+.main{
+    position: relative;
+    z-index: 1;
+}
+
 
 @media all and (max-width: 883px){
 
@@ -451,18 +447,39 @@ ul > li{
     }
 
     .saveFlightBtn{
-        /* width: 50%; */
         margin-top: 1.5em;
     }
     .airlineLogo{
         width: 25%;
         margin-bottom: 1em;
     }
+
+    h2:after{ 
+        content: '';
+        display: block;
+        width: 0px;
+        height: 1px;
+        background: rgb(36, 35, 35);
+        margin-top: .6em;
+        margin-left: .3em;
+    }
 }
 
 @media all and (max-width: 623px){
     #travelIdeas{
         visibility: hidden;
+    }
+    #signInBtn{
+        visibility: hidden;
+    }
+    #airportForm > div:nth-child(1){
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+    }
+    
+    #airportForm > div:nth-child(4){
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
     }
 }
 
@@ -480,7 +497,6 @@ ul > li{
         width: auto;
         min-width: 450px;
         margin: .5em 1em;
-        /* flex: 1 1 20%: */
     } 
 
     .airlineLogo{
@@ -493,10 +509,6 @@ ul > li{
     }
 
     .col {
-        /* display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center; */
         flex: 1;
         margin: 0 2em;
         font-size: 20px; 
@@ -509,3 +521,39 @@ ul > li{
 
 }
 
+
+.footer_container > hr {
+    width: 800px;
+    margin: 0 auto;
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-between;
+
+}
+.footer{
+    line-height: 1.5;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    bottom: 0;
+    font-size: 1.2rem;
+    margin-top: auto;
+}
+
+.active{
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column
+}
+
+.main{
+    flex:1;
+    min-height: 100vh;
+}
+
+img:hover{
+    cursor: pointer;
+    opacity: 75%;
+}
