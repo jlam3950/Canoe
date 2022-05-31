@@ -37,6 +37,11 @@ justify-content: center;
     z-index: 1;
 }
 
+.logo{
+    margin: 15px 15px;
+    width: 280px;
+
+}
 
 .card-flight {
 position: relative;
@@ -122,6 +127,7 @@ ul li a:hover:after {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 300px;
     
 
 }
@@ -246,6 +252,7 @@ a.card-link.flights{
         width: 350px;
         height: 250px;
         margin-right: 65px;
+        margin-bottom: 100px;
     }  
     #canoe-img, .img-container{
       display: none;
