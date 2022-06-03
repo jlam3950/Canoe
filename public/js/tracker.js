@@ -121,6 +121,7 @@ const closeBtn = document.getElementsByClassName("closeBtn")[0];
 function openModal(lat, lng) {
   modal.style.display = "block";
   map.getSize(flightMap(lat, lng));
+  setMapWidgetStyle(list((background = "rgba(255,0,0,0.0)")));
   flightMap(lat, lng);
 
 }

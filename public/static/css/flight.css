@@ -193,7 +193,7 @@ ul li a:hover:after {
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
     animation-name: modalopen;
     animation-duration: 1s;
-    background-color: rgba(0, 0, 0, 0.1);
+    /* background-color: rgba(0, 0, 0, 0); */
 }
 
 .map-container {
@@ -245,6 +245,8 @@ a.card-link.flights{
     display: flex;
     justify-content: space-between;
 }
+
+
 
 @media (max-width: 768px) {
     .card-flight, .flight-container, .flex-container, .content-flight{
